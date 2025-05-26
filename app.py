@@ -42,13 +42,17 @@ model = SentenceTransformer(MODEL_NAME)
 vector_data = {}
 
 for agent, paths in AGENTS.items():
-    index = faiss.read_index(paths["index"])
-    with open(paths["chunks"], "r", encoding="utf-8") as f:
-        chunks = json.load(f)
-    vector_data[agent] = {
-        "index": index,
-        "chunks": chunks
-    }
+    try:
+        index = faiss.read_index(paths["index"])
+        with open(paths["chunks"], "r", encoding="utf-8") as f:
+            chunks = json.load(f)
+        vector_data[agent] = {
+            "index": index,
+            "chunks": chunks
+        }
+        print(f"Loaded {agent} knowledge base successfully")
+    except Exception as e:
+        print(f"Error loading {agent} knowledge base: {e}")
 
 # Request schema
 class QueryRequest(BaseModel):
@@ -71,12 +75,14 @@ def query_agent(agent_key: str, question: str) -> str:
             results.append(chunks[i])
 
     if not results:
-        return f"Sorry, I couldn’t find anything helpful in the {agent_key.capitalize()} docs."
+        return f"Sorry, I couldn't find anything helpful in the {agent_key.capitalize()} docs."
 
-    response = f"Here’s what I found for: {question}.\n"
+    response = f"Here's what I found for: {question}.\n"
     for r in results[:3]:
         snippet = r["text"].replace("\n", " ").strip()[:500]
-        response += f"\n• {snippet}..."
+        # Add source URL when available
+        source = f" (Source: {r['url']})" if "url" in r else ""
+        response += f"\n• {snippet}...{source}"
     return response
 
 # Routes
