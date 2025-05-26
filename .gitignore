@@ -1,0 +1,16 @@
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Crawled data
+crawl4ai_docs/
+data/*/*.json
+data/*/*.faiss
+
+# Logs or temp
+*.log
+.env
+
+# IDE or OS-specific
+.vscode/
+.DS_Store
