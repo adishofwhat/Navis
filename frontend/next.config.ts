@@ -1,0 +1,13 @@
+const nextConfig = {
+    reactStrictMode: true,
+    env: {
+      NEXT_PUBLIC_VAPI_API_KEY: process.env.NEXT_PUBLIC_VAPI_API_KEY,
+      NEXT_PUBLIC_VAPI_ASSISTANT_ID_SHOPIFY: process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID_SHOPIFY,
+      NEXT_PUBLIC_VAPI_ASSISTANT_ID_WHATSAPP: process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID_WHATSAPP,
+      NEXT_PUBLIC_VAPI_ASSISTANT_ID_NOTION: process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID_NOTION,
+      NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    },
+  };
+  
+  export default nextConfig;
+  

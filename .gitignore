@@ -1,6 +1,51 @@
-# Python artifacts
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+# venv/
+# .venv/
+# ENV/
+
+# Node.js/Next.js (frontend)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*.local
+frontend/.env
+
+# General
+.DS_Store
+*.log
+*.swp
+.idea/
+.vscode/
+Thumbs.db
+
+# Project specific
+data/
+.env
+.env.local
+ngrok.exe
+.vercel
+frontend/vercel.json
+frontend/next.config.js
 
 # Crawled data
 crawl4ai_docs/
@@ -9,7 +54,7 @@ data/*/*.faiss
 
 # Logs or temp
 *.log
-.env
+# .env
 
 # IDE or OS-specific
 .vscode/
